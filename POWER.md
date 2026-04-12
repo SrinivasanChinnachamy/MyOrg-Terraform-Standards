@@ -1,6 +1,6 @@
 ---
 name: "srini-terraform-modules"
-displayName: "Srini Terraform Modules"
+displayName: "Centralized Terraform Modules & IaC Standards"
 description: "Discover, inspect, and scaffold Terraform configurations from private GitHub-hosted modules following the srini-terraform-aws-* naming convention. Enforces platform engineering standards including required tags, provider pinning, and file structure conventions."
 keywords: ["terraform", "srini-terraform", "infrastructure", "scaffold", "modules"]
 author: "Srinivasan Chinnachamy"
