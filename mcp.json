@@ -1,16 +1,16 @@
 {
   "mcpServers": {
-    "srini-terraform-mcp-server": {
+    "MyOrg-Terraform-mcp-server": {
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/SrinivasanChinnachamy/srini-terraform-mcp-server.git",
-        "srini-terraform-mcp-server"
+        "git+https://github.com/SrinivasanChinnachamy/MyOrg-Terraform-mcp-server.git",
+        "MyOrg-Terraform-mcp-server"
       ],
       "env": {
         "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN",
         "GITHUB_ORG": "YOUR_GITHUB_ORG",
-        "MODULE_PREFIX": "srini-terraform-aws-",
+        "MODULE_PREFIX": "myorg-terraform-aws-",
         "TF_MIN_VERSION": "1.14"
       },
       "disabled": false,
