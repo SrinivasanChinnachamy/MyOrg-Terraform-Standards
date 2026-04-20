@@ -1,16 +1,16 @@
 ---
-name: "srini-terraform-modules"
+name: "myorg-terraform-modules"
 displayName: "Centralized Terraform Modules & IaC Standards"
-description: "Discover, inspect, and scaffold Terraform configurations from private GitHub-hosted modules following the srini-terraform-aws-* naming convention. Enforces platform engineering standards including required tags, provider pinning, and file structure conventions."
-keywords: ["terraform", "srini-terraform", "infrastructure", "scaffold", "modules"]
+description: "Discover, inspect, and scaffold Terraform configurations from private GitHub-hosted modules following the myorg-terraform-aws-* naming convention. Enforces platform engineering standards including required tags, provider pinning, and file structure conventions."
+keywords: ["terraform", "myorg-terraform", "infrastructure", "scaffold", "modules"]
 author: "Srinivasan Chinnachamy"
 ---
 
-# Srini Terraform Modules
+# Organisation Terraform Modules
 
 ## Overview
 
-This power provides an end-to-end workflow for building AWS infrastructure using private Terraform modules hosted in GitHub. It connects to the `srini-terraform-mcp-server`, which discovers repositories matching the `srini-terraform-aws-*` naming convention and generates complete, standards-compliant Terraform configurations.
+This power provides an end-to-end workflow for building AWS infrastructure using private Terraform modules hosted in GitHub. It connects to the `myorg-terraform-mcp-server`, which discovers repositories matching the `myorg-terraform-aws-*` naming convention and generates complete, standards-compliant Terraform configurations.
 
 The server enforces platform engineering conventions — required tags (Environment, Team, CostCenter, ManagedBy), provider version pinning (Terraform >= 1.14, AWS >= 5.0), and a strict file structure — so every generated config is production-ready from the start.
 
@@ -23,7 +23,7 @@ This power also includes agent hooks for automated compliance checks and a steer
 - Python 3.10+ with `uv` / `uvx` installed ([installation guide](https://docs.astral.sh/uv/getting-started/installation/))
 - A GitHub personal access token with `repo` scope (for accessing private module repos)
 - Terraform CLI >= 1.14 installed locally
-- Access to the GitHub organization hosting the `srini-terraform-aws-*` module repos
+- Access to the GitHub organization hosting the `myorg-terraform-aws-*` module repos
 
 ### Installation
 
@@ -44,7 +44,7 @@ After installing this power, replace the placeholder values in `mcp.json`:
     5. Set it as an environment variable: `export GITHUB_TOKEN=ghp_your_token_here`
 
 - **`YOUR_GITHUB_ORG`**: The GitHub organization or username that owns the Terraform module repositories.
-  - **How to set it:** Use the org or username where your `srini-terraform-aws-*` repos live (e.g., `SrinivasanChinnachamy`)
+  - **How to set it:** Use the org or username where your `myorg-terraform-aws-*` repos live (e.g., `SrinivasanChinnachamy`)
 
 ### Environment Variables
 
@@ -52,7 +52,7 @@ After installing this power, replace the placeholder values in `mcp.json`:
 |----------|-------------|----------|
 | `GITHUB_TOKEN` | GitHub personal access token with `repo` scope | Yes |
 | `GITHUB_ORG` | GitHub org or user owning the module repos | Yes |
-| `MODULE_PREFIX` | Repo naming prefix (default: `srini-terraform-aws-`) | No |
+| `MODULE_PREFIX` | Repo naming prefix (default: `myorg-terraform-aws-`) | No |
 | `TF_MIN_VERSION` | Minimum Terraform version (default: `1.14`) | No |
 
 ## Common Workflows
@@ -169,8 +169,8 @@ outputs.tf       — output values from modules
 
 ### Module Source Convention
 
-- All modules live in private GitHub repos named `srini-terraform-aws-<service>`
-- Always use git source: `git::https://github.com/<org>/srini-terraform-aws-<service>.git?ref=<version>`
+- All modules live in private GitHub repos named `myorg-terraform-aws-<service>`
+- Always use git source: `git::https://github.com/<org>/myorg-terraform-aws-<service>.git?ref=<version>`
 - Pin to a specific tag — never use unversioned `main` in production
 - Always fetch the latest tag using `list_module_versions` before scaffolding
 
@@ -276,7 +276,7 @@ The steering document ensures the agent follows your team's standards in every i
 **Problem:** `search_modules` returns empty results
 **Solutions:**
 1. Verify `GITHUB_ORG` is set correctly
-2. Check that repos follow the `srini-terraform-aws-*` naming convention
+2. Check that repos follow the `myorg-terraform-aws-*` naming convention
 3. Ensure the GitHub token has access to the organization's repos
 4. Try searching without a keyword to list all modules
 
@@ -306,6 +306,6 @@ The steering document ensures the agent follows your team's standards in every i
 
 ---
 
-**Package:** `srini-terraform-mcp-server`
-**MCP Server:** srini-terraform-mcp-server
-**Source:** `git+https://github.com/SrinivasanChinnachamy/srini-terraform-mcp-server.git`
+**Package:** `myorg-terraform-mcp-server`
+**MCP Server:** myorg-terraform-mcp-server
+**Source:** `git+https://github.com/SrinivasanChinnachamy/myorg-terraform-mcp-server.git`
