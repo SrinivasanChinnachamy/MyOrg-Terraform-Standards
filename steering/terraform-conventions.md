@@ -8,8 +8,8 @@ When generating or reviewing Terraform code, always follow these conventions.
 
 ## Module Source
 
-- All infrastructure modules live in private GitHub repos named `srini-terraform-aws-<service>`.
-- Always use git source: `git::https://github.com/<org>/srini-terraform-aws-<service>.git?ref=<version>`
+- All infrastructure modules live in private GitHub repos named `myorg-terraform-aws-<service>`.
+- Always use git source: `git::https://github.com/<org>/myorg-terraform-aws-<service>.git?ref=<version>`
 - Pin to a specific tag — never use unversioned `main` in production.
 - Always fetch the latest git tag for a module using `list_module_versions` and use that tag as the `ref` value in the module source.
 
