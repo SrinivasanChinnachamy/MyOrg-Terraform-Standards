@@ -73,6 +73,18 @@ outputs.tf      — output values from modules
 - Every infrastructure project must include a `README.md` at the root of the project directory.
 - The README should cover: purpose of the infrastructure, modules used, input variables, outputs, and any prerequisites or usage instructions.
 
+## Module-Only Policy
+
+- **ONLY private modules (`myorg-terraform-aws-*`) may be used to provision infrastructure.** Do NOT create raw Terraform resources (e.g., `resource "aws_sns_topic"`, `resource "aws_instance"`) directly.
+- Before generating any infrastructure, use `search_modules` to verify a module exists for the requested service.
+- `search_modules` is the **authoritative check** for module existence. If it returns no results, the module does not exist — do NOT fall back to `get_module` or raw resources.
+- **If `search_modules` returns no modules for the requested service**, do NOT create raw resources as a fallback. Instead:
+  1. Explicitly inform the user that no module is available for that service.
+  2. Share the message from `search_modules` (e.g., contact platform engineering team).
+  3. List the modules that ARE available.
+  4. Ask the user how they'd like to proceed (e.g., request the module be created, skip that service, or explicitly approve a raw resource exception).
+- This ensures all infrastructure follows organizational standards and goes through approved, tested module code.
+
 ## Workflow
 
 When a user asks to create infrastructure:
